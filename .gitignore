@@ -1,0 +1,7 @@
+#ignores all temporal and bytes cache python generate automatycally
+*tmp*
+
+#ignores all data inside builds files
+*build*
+#any file ending with ~, such as index.html~
+*~
