@@ -160,10 +160,10 @@ void GLWidget::initializeGL()
     m_program->link();
 
     m_program->bind();
-    m_projMatrixLoc = m_program->uniformLocation("projMatrix");
-    m_mvMatrixLoc = m_program->uniformLocation("mvMatrix");
+    m_projMatrixLoc   = m_program->uniformLocation("projMatrix");
+    m_mvMatrixLoc     = m_program->uniformLocation("mvMatrix");
     m_normalMatrixLoc = m_program->uniformLocation("normalMatrix");
-    m_lightPosLoc = m_program->uniformLocation("lightPos");
+    m_lightPosLoc     = m_program->uniformLocation("lightPos");
 
     // Create a vertex array object. In OpenGL ES 2.0 and OpenGL 2.x
     // implementations this is optional and support may not be present

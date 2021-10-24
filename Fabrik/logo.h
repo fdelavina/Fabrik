@@ -9,7 +9,11 @@ class Logo
 {
 public:
     Logo();
-    const GLfloat *constData() const { return m_data.constData(); }
+    const GLfloat *constData() const
+    {
+        return m_data.constData();
+    }
+
     int count() const { return m_count; }
     int vertexCount() const { return m_count / 6; }
 
