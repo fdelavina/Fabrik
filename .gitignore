@@ -8,5 +8,5 @@
 *~
 
 #ignores pro.user
-*.pro.user
-*pro.user.*
+.pro.user
+.pro.user.*
