@@ -1,14 +1,14 @@
-#ifndef LOGO_H
-#define LOGO_H
+#ifndef LOGOCOPY_H
+#define LOGOCOPY_H
 
 #include <qopengl.h>
 #include <QVector>
 #include <QVector3D>
 
-class Logo
+class LogoCopy
 {
 public:
-    Logo();
+    LogoCopy();
 
     const GLfloat *constData() const
     {
@@ -35,4 +35,4 @@ private:
 };
 
 
-#endif // LOGO_H
+#endif // LOGOCOPY_H

@@ -7,6 +7,7 @@
 #include <QOpenGLBuffer>
 #include <QMatrix4x4>
 #include "logo.h"
+#include "logo_copy.h"
 
 QT_FORWARD_DECLARE_CLASS(QOpenGLShaderProgram)
 
@@ -43,16 +44,19 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
 
 private:
-    void setupVertexAttribs();
-
+    void setupVertexAttribs1();
+    void setupVertexAttribs2();
     bool m_core;
     int m_xRot = 0;
     int m_yRot = 0;
     int m_zRot = 0;
     QPoint m_lastPos;
     Logo m_logo;
+    LogoCopy m_logo2;
     QOpenGLVertexArrayObject m_vao;
+    QOpenGLVertexArrayObject m_vao2;
     QOpenGLBuffer m_logoVbo;
+    QOpenGLBuffer m_logoVbo2;
     QOpenGLShaderProgram *m_program = nullptr;
     int m_projMatrixLoc = 0;
     int m_mvMatrixLoc = 0;

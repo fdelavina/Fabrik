@@ -169,6 +169,8 @@ void GLWidget::initializeGL()
     // implementations this is optional and support may not be present
     // at all. Nonetheless the below code works in all cases and makes
     // sure there is a VAO when one is needed.
+
+    // 1
     m_vao.create();
     QOpenGLVertexArrayObject::Binder vaoBinder(&m_vao);
 
@@ -178,11 +180,25 @@ void GLWidget::initializeGL()
     m_logoVbo.allocate(m_logo.constData(), m_logo.count() * sizeof(GLfloat));
 
     // Store the vertex attribute bindings for the program.
-    setupVertexAttribs();
+    setupVertexAttribs1();
+
+    // 2
+    m_vao2.create();
+    QOpenGLVertexArrayObject::Binder vaoBinder2(&m_vao2);
+
+    // Setup our vertex buffer object.
+    m_logoVbo2.create();
+    m_logoVbo2.bind();
+    m_logoVbo2.allocate(m_logo2.constData(), m_logo2.count() * sizeof(GLfloat));
+
+    // Store the vertex attribute bindings for the program.
+    setupVertexAttribs2();
+
+
 
     // Our camera never changes in this example.
     m_camera.setToIdentity();
-    m_camera.translate(0, 0, -1);
+    m_camera.translate(0, 0, -5);
 
     // Light position is fixed.
     m_program->setUniformValue(m_lightPosLoc, QVector3D(0, 0, 70));
@@ -190,7 +206,7 @@ void GLWidget::initializeGL()
     m_program->release();
 }
 
-void GLWidget::setupVertexAttribs()
+void GLWidget::setupVertexAttribs1()
 {
     m_logoVbo.bind();
     QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
@@ -201,6 +217,19 @@ void GLWidget::setupVertexAttribs()
     f->glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat),
                              reinterpret_cast<void *>(3 * sizeof(GLfloat)));
     m_logoVbo.release();
+}
+
+void GLWidget::setupVertexAttribs2()
+{
+    m_logoVbo2.bind();
+    QOpenGLFunctions *f = QOpenGLContext::currentContext()->functions();
+    f->glEnableVertexAttribArray(0);
+    f->glEnableVertexAttribArray(1);
+    f->glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat),
+                             nullptr);
+    f->glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat),
+                             reinterpret_cast<void *>(3 * sizeof(GLfloat)));
+    m_logoVbo2.release();
 }
 
 void GLWidget::paintGL()
@@ -222,7 +251,8 @@ void GLWidget::paintGL()
     m_program->setUniformValue(m_normalMatrixLoc, normalMatrix);
 
     glDrawArrays(GL_TRIANGLES, 0, m_logo.vertexCount());
-
+    QOpenGLVertexArrayObject::Binder vaoBinder2(&m_vao2);
+    glDrawArrays(GL_TRIANGLES, 0, m_logo2.vertexCount());
     m_program->release();
 }
 

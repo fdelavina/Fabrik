@@ -1,19 +1,19 @@
-﻿#include "logo.h"
+﻿#include "logo_copy.h"
 #include <qmath.h>
 
-#define OFFSET -0.0f;
+#define OFFSET 2.0f;
 
-Logo::Logo()
+LogoCopy::LogoCopy()
 {
     m_data.resize(2500 * 6); //size de m_data to 2500 * 6
 
-    const GLfloat x1 = +0.06f + OFFSET;
+    const GLfloat x1 = +0.06f ;
     const GLfloat y1 = -0.14f;
-    const GLfloat x2 = +0.14f + OFFSET;
+    const GLfloat x2 = +0.14f ;
     const GLfloat y2 = -0.06f;
-    const GLfloat x3 = +0.08f + OFFSET;
+    const GLfloat x3 = +0.08f ;
     const GLfloat y3 = +0.00f;
-    const GLfloat x4 = +0.30f + OFFSET;
+    const GLfloat x4 = +0.30f ;
     const GLfloat y4 = +0.22f;
 
     quad(x1, y1, x2, y2, y2, x2, y1, x1);
@@ -34,7 +34,7 @@ Logo::Logo()
         GLfloat angleSin = qSin(angle);
         GLfloat angleCos = qCos(angle);
         const GLfloat x5 = 0.30f * angleSin + OFFSET;
-        const GLfloat y5 = 0.30f * angleCos;
+        const GLfloat y5 = 0.30f * angleCos ;
         const GLfloat x6 = 0.20f * angleSin + OFFSET;
         const GLfloat y6 = 0.20f * angleCos;
 
@@ -55,7 +55,7 @@ Logo::Logo()
 
 
 
-void Logo::add(const QVector3D &v, const QVector3D &n)
+void LogoCopy::add(const QVector3D &v, const QVector3D &n)
 {
     GLfloat *p = m_data.data() + m_count;
     *p++ = v.x();
@@ -67,7 +67,7 @@ void Logo::add(const QVector3D &v, const QVector3D &n)
     m_count += 6;
 }
 
-void Logo::quad(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3, GLfloat x4, GLfloat y4)
+void LogoCopy::quad(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfloat y3, GLfloat x4, GLfloat y4)
 {
     QVector3D n = QVector3D::normal(QVector3D(x4 - x1, y4 - y1, 0.0f), QVector3D(x2 - x1, y2 - y1, 0.0f));
 
@@ -90,7 +90,7 @@ void Logo::quad(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GLfl
     add(QVector3D(x4, y4, 0.05f), n);
 }
 
-void Logo::extrude(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+void LogoCopy::extrude(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
     QVector3D n = QVector3D::normal(QVector3D(0.0f, 0.0f, -0.1f), QVector3D(x2 - x1, y2 - y1, 0.0f));
 

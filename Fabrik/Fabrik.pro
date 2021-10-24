@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     glwidget.cpp \
     logo.cpp \
+    logo_copy.cpp \
     main.cpp \
     mainwindow.cpp \
     window.cpp
@@ -18,6 +19,7 @@ SOURCES += \
 HEADERS += \
     glwidget.h \
     logo.h \
+    logo_copy.h \
     mainwindow.h \
     window.h
 
