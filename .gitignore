@@ -1,7 +1,11 @@
-#ignores all temporal and bytes cache python generate automatycally
+#ignores all temporal  generate automatycally
 *tmp*
 
 #ignores all data inside builds files
 *build*
-#any file ending with ~, such as index.html~
+
+#ignores any file ending with ~, such as index.html~
 *~
+
+#ignores pro.user
+*pro.user*
