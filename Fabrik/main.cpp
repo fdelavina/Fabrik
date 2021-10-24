@@ -1,8 +1,3 @@
-#include "mainwindow.h"
-
-#include <QApplication>
-
-
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QSurfaceFormat>
@@ -10,7 +5,7 @@
 #include <QCommandLineOption>
 
 #include "glwidget.h"
-
+#include "mainwindow.h"
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);

@@ -9,7 +9,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
-    ~MainWindow();
+    //~MainWindow();
 
 private slots:
     void onAddNew();

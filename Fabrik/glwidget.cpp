@@ -19,7 +19,6 @@ GLWidget::GLWidget(QWidget *parent)
     }
 }
 
-
 GLWidget::~GLWidget()
 {
     cleanup();
